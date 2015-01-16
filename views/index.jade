@@ -1,0 +1,85 @@
+doctype html
+html(lang='en')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', href='//vjs.zencdn.net/4.11/video-js.css')
+    link(rel='stylesheet', type='text/css', href='/stat/css/medium.css')
+    link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css')
+
+    script(src='/stat/js/jquery.js')
+    script(src='/stat/js/jquery.nicescroll.min.js')
+    script(src='//vjs.zencdn.net/4.11/video.js')
+    script(src='/stat/js/vjs.youtube.js')
+    script(src='/stat/js/vjs.vimeo.js')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+  body
+    nav.navbar.navbar-inverse.navbar-static-top
+      div.container-fluid
+        div.navbar-header
+          div.navbar-brand
+            | medium
+
+    div.container
+      div.row
+        div.col-xs1.col-sm-1
+        div.col-xs10.col-sm-10
+          div.row
+            div.col-xs-8.col-sm-8
+              div.page-header
+                h1
+                  | medium
+                  small
+                    em
+                      | ... channel your videos!
+            div.col-xs-4.col-sm-4
+              form.form-inline(name='search', action='/search', method='post')
+                div.form-group
+                  //- label.col-sm-2.control-label(for='subreddit')
+                  //-   | Subreddit
+                  //- div.col-sm-10
+                  input.form-control(type='text', name='subreddit', id='subreddit', placeholder='Videos')                  
+                div.form-group
+                  //- div.col-sm-offset-2.col-sm-10
+                  button.btn.btn-primary.btn-padded(type='submit', id='search')
+                    | Go
+                p
+                  em 
+                    | subreddit to scrape
+        div.col-xs1.col-sm-1
+      div.row
+        div.col-sm-2
+          h1.vertical-center
+            button.previous.btn-circle.btn-xl
+              i.glyphicon.glyphicon-chevron-left
+        div.col-sm-8
+          div#player.video.videoWrapper
+        div.col-sm-2
+          h1.vertical-center
+            button.next.btn-circle.btn-xl
+              i.glyphicon.glyphicon-chevron-right
+      div.row
+        div.col-sm-3
+        div.col-sm-6
+          div.row.padTop
+            
+        div.col-sm-3
+    div#main-content.container
+      div#thumbnails.row
+        div#thumb.col-sm-3.col-xs-12.hidden
+          img.img-thumbnail(data-source='#')
+          //- div.thumbnail            
+            //- div.caption
+              h5.vtitle
+                | title
+    div#results.container.hidden
+      div.row
+        div.col-sm-12.text-center
+          h1
+            span.subreddit.label.label-success
+              | sub
+            button#more.btn.btn-default.btn-lg.btn-padded
+              | load more!
+    script(src='/stat/js/medium.js')
+    div.currentVideos.hidden
+      !=videos

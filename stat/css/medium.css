@@ -1,0 +1,152 @@
+
+#player {
+	position: relative;
+	padding-bottom: 56.%; /* video dimensions - height/width */
+	padding-top: 0px;
+	height: 400px;
+	z-index: 1000;
+}
+
+video {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}    
+
+video.video-js {
+  z-index: 1000;
+}               
+ 
+.video-js .vjs-controls {
+  z-index: 1002;
+}
+ 
+.video-js .vjs-big-play-button {
+  z-index: 1002;
+}
+ 
+.videoWrapper .video-js {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+	z-index: 1;
+	background: #000000;
+}         
+ 
+.videoWrapper object,
+.videoWrapper embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  z-index: 1;
+  margin-bottom:10px;
+}        
+ 
+.vjs-spinner {
+  display: none !important;
+}
+ 
+.video-js img.vjs-poster {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.vertical-center {
+height: 100% !important;
+width: 100% !important;
+display: flex;
+align-items: center;
+flex-direction: column;
+/* flex-grow: 1; */
+padding-top: 100%;
+}
+
+.padTop {
+	padding-top:20px;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+
+}
+
+.btn-circle:focus {
+outline: -webkit-focus-ring-color auto 0px;
+}
+
+.page-header {
+	margin: -25px 0 20px !important;
+}
+
+.btn-padded {
+	margin-left: 5px;
+}
+
+@media (min-width:768px) {
+.container {
+width:100%;
+}
+#main-content{
+     min-height: 100%;     
+    height: auto; 
+   
+}
+#main-content > .row {
+ overflow-x:scroll;
+     overflow-y:hidden;
+    white-space:nowrap;
+}    
+#main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
+    float:none;
+    display:inline-block;
+}
+
+.nowplaying {
+	box-shadow: 0 0 15px 5px rgb(20, 70, 163) !important;
+}
+
+#thumbnails {
+	padding: 20px;
+	height: 200px;
+}
