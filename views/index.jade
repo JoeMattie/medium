@@ -1,85 +1,116 @@
-doctype html
-html(lang='en')
-  head
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', type='text/css', href='//vjs.zencdn.net/4.11/video-js.css')
-    link(rel='stylesheet', type='text/css', href='/stat/css/medium.css')
-    link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
-    link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css')
+extends layout
 
-    script(src='/stat/js/jquery.js')
-    script(src='/stat/js/jquery.nicescroll.min.js')
-    script(src='//vjs.zencdn.net/4.11/video.js')
-    script(src='/stat/js/vjs.youtube.js')
-    script(src='/stat/js/vjs.vimeo.js')
-    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
-  body
-    nav.navbar.navbar-inverse.navbar-static-top
-      div.container-fluid
-        div.navbar-header
-          div.navbar-brand
-            | medium
+block body
+  header
+    nav.blue.darken-3.top-nav
+      .nav-wrapper                
+        ul#nav-mobile.right.side-nav.valign-wrapper
+          li 
+            a(href="#") Login
+          li
+            #gSignInWrapper              
+              #customBtn.customGPlusSignIn.valign
+                span.icon
+                span.buttonText Google    
+            //- a#signinButton Sign in with Google
+          li 
+            a(href="#") Register
+          li 
+            a(href="#") New Channel
 
-    div.container
-      div.row
-        div.col-xs1.col-sm-1
-        div.col-xs10.col-sm-10
-          div.row
-            div.col-xs-8.col-sm-8
-              div.page-header
-                h1
-                  | medium
-                  small
-                    em
-                      | ... channel your videos!
-            div.col-xs-4.col-sm-4
-              form.form-inline(name='search', action='/search', method='post')
-                div.form-group
-                  //- label.col-sm-2.control-label(for='subreddit')
-                  //-   | Subreddit
-                  //- div.col-sm-10
-                  input.form-control(type='text', name='subreddit', id='subreddit', placeholder='Videos')                  
-                div.form-group
-                  //- div.col-sm-offset-2.col-sm-10
-                  button.btn.btn-primary.btn-padded(type='submit', id='search')
-                    | Go
-                p
-                  em 
-                    | subreddit to scrape
-        div.col-xs1.col-sm-1
-      div.row
-        div.col-sm-2
-          h1.vertical-center
-            button.previous.btn-circle.btn-xl
-              i.glyphicon.glyphicon-chevron-left
-        div.col-sm-8
-          div#player.video.videoWrapper
-        div.col-sm-2
-          h1.vertical-center
-            button.next.btn-circle.btn-xl
-              i.glyphicon.glyphicon-chevron-right
-      div.row
-        div.col-sm-3
-        div.col-sm-6
-          div.row.padTop
-            
-        div.col-sm-3
-    div#main-content.container
-      div#thumbnails.row
-        div#thumb.col-sm-3.col-xs-12.hidden
-          img.img-thumbnail(data-source='#')
-          //- div.thumbnail            
-            //- div.caption
-              h5.vtitle
-                | title
-    div#results.container.hidden
-      div.row
-        div.col-sm-12.text-center
-          h1
-            span.subreddit.label.label-success
-              | sub
-            button#more.btn.btn-default.btn-lg.btn-padded
-              | load more!
-    script(src='/stat/js/medium.js')
-    div.currentVideos.hidden
-      !=videos
+  mediummain
+
+  footer.page-footer.orange
+    .container
+      .row
+        .col.l6.s12
+          h5.white-text About medium
+          p.grey-text.text-lighten-4.light 
+            | medium developed out of frustration at the lack of a good way to gather up and present a bunch of videos.
+            | Sometimes all we want to do is click three times and have a bunch of music videos play on our TVs, is that too much to ask for?
+        .col.l4.offset-l2.s12
+          h5.white-text medium is built with
+          .row
+            .col.l6.s12
+              ul
+                li
+                  a.grey-text.text-lighten-3(href='#!') node.js
+                li
+                  a.grey-text.text-lighten-3(href='#!') express
+                li
+                  a.grey-text.text-lighten-3(href='#!') jade
+                li
+                  a.grey-text.text-lighten-3(href='#!') gulp
+            .col.l6.s12
+              ul
+                li
+                  a.grey-text.text-lighten-3(href='#!') riot
+                li
+                  a.grey-text.text-lighten-3(href='#!') riak
+                li
+                  a.grey-text.text-lighten-3(href='#!') sass
+                li
+                  a.grey-text.text-lighten-3(href='#!') and love
+    .footer-copyright
+      .container
+        | © 2015 medium
+        a.grey-text.text-lighten-4.right(href='//github.com/JoeMattie/medium') github
+
+  script(src='lib/jquery/dist/jquery.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/gsap/latest/utils/Draggable.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js')
+  //- script(src='lib/masonry/dist/masonry.pkgd.min.js')
+  script(src='lib/materialize/dist/js/materialize.min.js')
+  script(src='lib/videojs/dist/video-js/video.dev.js')
+  script(src='lib/vjs.youtube.js')
+  script(src='lib/vjs.vimeo.js')    
+  script(src='lib/riot.min.js')
+  script(src='js/video.js')
+  script(src='js/medium.js')
+
+
+  script.
+    riot.mount('mediummain', {
+      videomode: false,
+      videodata: {},
+      items: [ 
+        {
+          icon: 'mdi-social-whatshot',
+          title: 'popular channels',
+          content: 'Our best and most popular channels: curated by humans, for humans.'
+        },
+        {
+          icon: 'mdi-social-share',
+          title: 'subreddit feeds',
+          content: 'Constantly updated feeds from a number of popular subreddits.',
+          channels: [ 
+            { name: 'Videos',
+              path: '/r/Videos',
+              desc: 'The most popular videos as of RIGHT NOW!'
+            },
+            {
+              name: 'FunnyVideos',
+              path: '/r/FunnyVideos',
+              desc: 'Funny'
+            }
+          ]
+        }
+      ]
+    });    
+  
+
+    
+    
+    $('#customBtn').click(function() {
+      gapi.signin.render('customBtn', {
+        'callback': function(authResult){
+            if (authResult['status']['signed_in']) $('#signinButton').hide();
+            else console.log('Sign-in state: ' + authResult['error']);},
+        'clientid': '819951061861-u7punsge58l3d7du1aehm2ccljghbdo9.apps.googleusercontent.com',
+        'cookiepolicy': 'single_host_origin',
+        'requestvisibleactions': 'http://schema.org/AddAction',
+        'scope': 'https://www.googleapis.com/auth/plus.login'
+      });
+        gapi.auth.signIn({ });
+    });

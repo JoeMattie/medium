@@ -1,0 +1,11 @@
+{
+  "name": "medium",
+  "description": "medium... channels your videos!",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "",
+  "private": true,
+  "dependencies": {
+    "materialize": "~0.95.3"
+  }
+}

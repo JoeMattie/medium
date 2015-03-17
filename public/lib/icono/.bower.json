@@ -1,0 +1,17 @@
+{
+  "name": "icono",
+  "main": "icono.min.css",
+  "ignore": [],
+  "private": false,
+  "homepage": "https://github.com/saeedalipoor/icono",
+  "_release": "638ba7da68",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "638ba7da682d34862c15d2ba39687fecd8db9170"
+  },
+  "_source": "git://github.com/saeedalipoor/icono.git",
+  "_target": "*",
+  "_originalSource": "icono",
+  "_direct": true
+}
